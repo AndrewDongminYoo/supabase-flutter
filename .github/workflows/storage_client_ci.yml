@@ -14,6 +14,7 @@ on:
 
 jobs:
   test:
+    if: ${{ !(github.event_name == 'pull_request' && contains(fromJSON('["dependabot[bot]", "renovate[bot]", "snyk-bot", "allcontributors[bot]"]'), github.actor)) }}
     name: Test SDK ${{ matrix.sdk }}
     strategy:
       fail-fast: false

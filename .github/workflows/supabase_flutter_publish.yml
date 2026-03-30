@@ -7,6 +7,7 @@ on:
 
 jobs:
   publish:
+    if: ${{ !(github.event_name == 'pull_request' && contains(fromJSON('["dependabot[bot]", "renovate[bot]", "snyk-bot", "allcontributors[bot]"]'), github.actor)) }}
     name: Publish on pub.dev
     runs-on: ubuntu-latest
     permissions:
