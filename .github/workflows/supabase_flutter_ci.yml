@@ -27,6 +27,7 @@ on:
 
 jobs:
   test:
+    if: ${{ !(github.event_name == 'pull_request' && contains(fromJSON('["dependabot[bot]", "renovate[bot]", "snyk-bot", "allcontributors[bot]"]'), github.actor)) }}
     name: Test Flutter v${{ matrix.flutter-version }}
     strategy:
       fail-fast: false
